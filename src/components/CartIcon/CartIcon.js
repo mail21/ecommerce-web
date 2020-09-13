@@ -6,7 +6,7 @@ function CartIcon() {
   return (
     <div className="cart-icon">
       <ShoppingBag className="icon-img" />
-      <span>0</span>
+      <span className="icon-counter">0</span>
     </div>
   );
 }

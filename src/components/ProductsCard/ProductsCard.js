@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ReactComponent as AddToCart } from './../../assets/addtocart.svg';
 import { ReactComponent as Hearth } from './../../assets/hearth.svg';
+import { Context } from './../../context';
+import { actionTypes } from './../../reducer';
+
 import './ProductsCard.scss';
-function ProductsCard() {
-  let src =
-    'https://cdn.shopify.com/s/files/1/0076/8812/6522/products/slate8_1024x1024.jpg?v=1587464943';
+function ProductsCard({ nama, src, like, id }) {
+  const [state, dispatch] = useContext(Context);
+  const [isLike, setIsLike] = React.useState(like);
+  let liked_shoes_data = state.liked_shoes;
+
+  const clickLike = () => {
+    setIsLike((prev) => !prev);
+    liked_shoes_data.push(state.shoes_data[id]);
+    dispatch({
+      type: actionTypes.ADD_LIKED,
+      payload: liked_shoes_data,
+    });
+  };
+
   return (
     <div className="card">
       {/* <div
@@ -14,12 +28,16 @@ function ProductsCard() {
         className="card-image"
       /> */}
       {/* <img src={src} alt="Sepatu kets" width="400" height="250" /> */}
-      <img src={src} alt="Sepatu kets" width="350" height="220" />
+      <img src={src} className="card-image" alt="Sepatu kets" width="350" height="220" />
       <div className="card-desc">
-        <span>Mesh Slip On Air Cushion</span>
+        <span>{nama}</span>
         <div>
           <AddToCart className="card--addtocart" />
-          <Hearth className="card--hearth" />
+          <Hearth
+            className="card--hearth"
+            style={isLike ? { fill: 'red', transform: 'scale(1.2)' } : { fill: 'lightgray' }}
+            onClick={clickLike}
+          />
         </div>
       </div>
     </div>

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import Banner from './../assets/banner.jpg';
 import { ReactComponent as Hearth } from './../assets/hearth.svg';
-import ProductsCard from './../components/ProductsCard/ProductsCard';
+import ProductsCardsList from './../components/ProductsCardsList/ProductsCardsList';
+import { Context } from './../context';
 
 import './ProductsPage.scss';
 
 function ProductsPage() {
+  const [state] = useContext(Context);
+  const [isFavouriteClick, setIsFavouriteClick] = useState(false);
   return (
     <>
       <Navbar />
@@ -23,23 +26,18 @@ function ProductsPage() {
             <li>Sekolah</li>
           </ul>
           <div className="products--myfavourites">
-            <Hearth style={{ marginRight: '10' }} />
-            <span>My Favourites(0)</span>
+            <Hearth style={{ marginRight: '10', fill: 'red' }} />
+            <span
+              style={{ cursor: 'pointer' }}
+              onClick={() => setIsFavouriteClick((prev) => !prev)}
+            >
+              My Favourites({state.liked_shoes.length})
+            </span>
           </div>
         </aside>
 
         <article>
-          <ProductsCard />
-          <ProductsCard />
-
-          <ProductsCard />
-          <ProductsCard />
-
-          <ProductsCard />
-          <ProductsCard />
-
-          <ProductsCard />
-          <ProductsCard />
+          <ProductsCardsList isFavouriteClick={isFavouriteClick} />
         </article>
       </main>
     </>

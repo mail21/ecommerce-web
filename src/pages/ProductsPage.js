@@ -31,7 +31,7 @@ function ProductsPage() {
               style={{ cursor: 'pointer' }}
               onClick={() => setIsFavouriteClick((prev) => !prev)}
             >
-              My Favourites({state.liked_shoes.length})
+              My Favourites({state.jmlMyFavourites})
             </span>
           </div>
         </aside>

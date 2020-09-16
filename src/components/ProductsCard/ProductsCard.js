@@ -7,15 +7,11 @@ import { actionTypes } from './../../reducer';
 import './ProductsCard.scss';
 function ProductsCard({ nama, src, like, id }) {
   const [state, dispatch] = useContext(Context);
-  const [isLike, setIsLike] = React.useState(like);
-  let liked_shoes_data = state.liked_shoes;
 
   const clickLike = () => {
-    setIsLike((prev) => !prev);
-    liked_shoes_data.push(state.shoes_data[id]);
     dispatch({
-      type: actionTypes.ADD_LIKED,
-      payload: liked_shoes_data,
+      type: actionTypes.CLICK_LIKE,
+      payload: { id: id, like: !like },
     });
   };
 
@@ -35,7 +31,7 @@ function ProductsCard({ nama, src, like, id }) {
           <AddToCart className="card--addtocart" />
           <Hearth
             className="card--hearth"
-            style={isLike ? { fill: 'red', transform: 'scale(1.2)' } : { fill: 'lightgray' }}
+            style={like ? { fill: 'red', transform: 'scale(1.2)' } : { fill: 'lightgray' }}
             onClick={clickLike}
           />
         </div>

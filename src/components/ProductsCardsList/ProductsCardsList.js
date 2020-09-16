@@ -8,22 +8,28 @@ function ProductsCardsList({ isFavouriteClick }) {
   return (
     <>
       {isFavouriteClick
-        ? state.liked_shoes.map((shoes, index) => (
-            <ProductsCard
-              key={index}
-              id={index}
-              nama={shoes.nama}
-              src={shoes.src}
-              like={false}
-            />
-          ))
+        ? state.shoes_data.map((shoes, index) => {
+            if (shoes.like) {
+              console.log('shoes');
+
+              return (
+                <ProductsCard
+                  key={index}
+                  id={shoes.id}
+                  like={shoes.like}
+                  nama={shoes.nama}
+                  src={shoes.src}
+                />
+              );
+            }
+          })
         : state.shoes_data.map((shoes, index) => (
             <ProductsCard
               key={index}
-              id={index}
+              id={shoes.id}
+              like={shoes.like}
               nama={shoes.nama}
               src={shoes.src}
-              like={false}
             />
           ))}
     </>

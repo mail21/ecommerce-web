@@ -1,19 +1,29 @@
 import SHOES_DATA from './SHOES_DATA';
 
 export const initialState = {
+  jmlMyFavourites: 0,
   shoes_data: SHOES_DATA,
-  liked_shoes: [],
 };
 
 export const actionTypes = {
-  ADD_LIKED: 'ADD_LIKED',
+  CLICK_LIKE: 'CLICK_LIKE',
 };
 
 export const reducer = (state, action) => {
-  console.log(state.liked_shoes);
   switch (action.type) {
-    case actionTypes.ADD_LIKED:
-      return { ...state, liked_shoes: action.payload };
+    case actionTypes.CLICK_LIKE:
+      return {
+        ...state,
+        jmlMyFavourites: action.payload.like
+          ? state.jmlMyFavourites + 1
+          : state.jmlMyFavourites - 1,
+        shoes_data: state.shoes_data.map((shoes) => {
+          if (action.payload.id === shoes.id) {
+            return { ...shoes, like: action.payload.like };
+          }
+          return shoes;
+        }),
+      };
     default:
       return state;
   }

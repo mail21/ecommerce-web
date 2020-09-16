@@ -5,6 +5,7 @@ import { ReactComponent as Hearth } from './../assets/hearth.svg';
 import ProductsCardsList from './../components/ProductsCardsList/ProductsCardsList';
 import { Context } from './../context';
 import iklan from './../assets/iklanProductsPage.PNG';
+import Footer from './../components/Footer/Footer';
 
 import './ProductsPage.scss';
 
@@ -41,6 +42,7 @@ function ProductsPage() {
           <ProductsCardsList isFavouriteClick={isFavouriteClick} />
         </article>
       </main>
+      <Footer />
     </>
   );
 }

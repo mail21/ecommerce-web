@@ -1,0 +1,17 @@
+footer {
+  background-color: #363434;
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+
+  .footer-image {
+    width: 250px;
+    margin-left: 4em;
+  }
+
+  .footer-span {
+    margin-top: 10px;
+    color: white;
+    margin-left: 4em;
+  }
+}

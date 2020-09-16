@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import ProductsCard from './../ProductsCard/ProductsCard';
-import SHOES_DATA from './../../SHOES_DATA';
 import { Context } from './../../context';
 
 function ProductsCardsList({ isFavouriteClick }) {
@@ -10,8 +9,6 @@ function ProductsCardsList({ isFavouriteClick }) {
       {isFavouriteClick
         ? state.shoes_data.map((shoes, index) => {
             if (shoes.like) {
-              console.log('shoes');
-
               return (
                 <ProductsCard
                   key={index}

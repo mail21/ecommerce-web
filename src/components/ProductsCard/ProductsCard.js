@@ -6,7 +6,7 @@ import { actionTypes } from './../../reducer';
 
 import './ProductsCard.scss';
 function ProductsCard({ nama, src, like, id }) {
-  const [state, dispatch] = useContext(Context);
+  const [, dispatch] = useContext(Context);
 
   const clickLike = () => {
     dispatch({

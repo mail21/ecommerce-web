@@ -4,6 +4,7 @@ import Banner from './../assets/banner.jpg';
 import { ReactComponent as Hearth } from './../assets/hearth.svg';
 import ProductsCardsList from './../components/ProductsCardsList/ProductsCardsList';
 import { Context } from './../context';
+import iklan from './../assets/iklanProductsPage.PNG';
 
 import './ProductsPage.scss';
 
@@ -25,15 +26,15 @@ function ProductsPage() {
             <li>Olahraga</li>
             <li>Sekolah</li>
           </ul>
-          <div className="products--myfavourites">
+          <div
+            className="products--myfavourites"
+            style={{ cursor: 'pointer' }}
+            onClick={() => setIsFavouriteClick((prev) => !prev)}
+          >
             <Hearth style={{ marginRight: '10', fill: 'red' }} />
-            <span
-              style={{ cursor: 'pointer' }}
-              onClick={() => setIsFavouriteClick((prev) => !prev)}
-            >
-              My Favourites({state.jmlMyFavourites})
-            </span>
+            <span>My Favourites({state.jmlMyFavourites})</span>
           </div>
+          <img src={iklan} alt="asda" style={{ marginTop: '50px' }} />
         </aside>
 
         <article>

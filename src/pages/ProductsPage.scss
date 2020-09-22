@@ -16,6 +16,9 @@ main {
 
   aside .products--myfavourites {
     display: flex;
+    cursor: pointer;
+    padding: 10px;
+    transition: border 1s ease;
   }
 
   li {

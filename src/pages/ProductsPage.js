@@ -29,7 +29,15 @@ function ProductsPage() {
           </ul>
           <div
             className="products--myfavourites"
-            style={{ cursor: 'pointer' }}
+            style={
+              isFavouriteClick
+                ? {
+                    borderTop: '1px solid',
+                    borderBottom: '1px solid',
+                    opacity: '0.8',
+                  }
+                : {}
+            }
             onClick={() => setIsFavouriteClick((prev) => !prev)}
           >
             <Hearth style={{ marginRight: '10', fill: 'red' }} />

@@ -46,8 +46,20 @@ function ProductsPage() {
           <img src={iklan} alt="asda" style={{ marginTop: '50px' }} />
         </aside>
 
-        <article>
-          <ProductsCardsList isFavouriteClick={isFavouriteClick} />
+        <article className="products__article">
+          <div>
+            {isFavouriteClick ? (
+              <>
+                <h1 style={{ fontSize: '40px', color: '#62929a' }}>My Favourites</h1>
+                <hr style={{ margin: '20px 0' }} />
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="article-items">
+            <ProductsCardsList isFavouriteClick={isFavouriteClick} />
+          </div>
         </article>
       </main>
       <Footer />
